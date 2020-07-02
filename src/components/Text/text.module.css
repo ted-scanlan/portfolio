@@ -1,0 +1,29 @@
+.text {
+    margin: 0;
+}
+
+.SMALL {
+    font-size: 22px;
+}
+
+p.SMALL {
+    font-size: 18px;
+}
+
+.MEDIUM {
+    font-size: 27px;
+}
+
+p.MEDIUM {
+    font-size: 23px;
+}
+
+.LARGE {
+    font-size: 36px;
+}
+
+p.LARGE {
+    font-size: 30px;
+}
+
+

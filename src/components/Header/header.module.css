@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    
+}
+
+.nameTitle {
+    display: flex;
+    flex: 1; 
+    flex-wrap: wrap;  
+}
+.name {  
+    width: 100%;     /*  making this div 100% forces the title i.e. 'software developer' on to the next line below*/
+}
+
+.nav {
+    display: flex;
+    flex: 1; 
+    justify-content: flex-end;
+    margin-top: 20px;
+    margin-right: 10px;
+}
