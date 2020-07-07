@@ -1,4 +1,14 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
 
-export const getInfo = () => useSelector((state) => state.description);
+// const getHeading = (state)
+
+const getDescription = (state) => {
+  if (state.home[0]) {
+    return state.home[0].description;
+  }
+};
+
+export const selectors = createSelector(getDescription, (description) => ({
+  description, // extract this to redux/home/selectors
+}));

@@ -1,5 +1,6 @@
 body {
     font-family: 'Pangolin', cursive;
+    background-color: #EAE7DC;
 }
 
 .footer {
@@ -10,4 +11,11 @@ body {
     padding: 10px;
     margin-right: 10px;
    
+
+}
+
+
+
+.home {
+    height: 100%;
 }

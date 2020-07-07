@@ -10,7 +10,6 @@ import createTypes from "./types/index.js";
 
 const createRequest = ({ name, endpoint, params } = {}) => {
   // need to create types, so i will have a success/pending/error whihci can send to reducer, then if its SUCCESS, it changes the state of the app to have the data (i.e. home description) in it.
-  console.log({ name });
 
   const types = createTypes(name);
   const actions = createAction({ name, endpoint, params });

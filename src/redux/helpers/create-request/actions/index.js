@@ -23,7 +23,6 @@ export default ({ endpoint, params = {} } = {}) => {
             ...dynamicParams,
           },
         });
-        console.log(response);
         // we need to send an action with the data;
         dispatch(fetchDataSuccess(response?.data));
       } catch (error) {

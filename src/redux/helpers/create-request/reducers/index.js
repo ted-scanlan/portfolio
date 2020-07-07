@@ -2,7 +2,6 @@
 
 export default (types) => (state = {}, { type, data }) => {
   // the second argument is the action, which can be destructured to extract the type and the data
-  console.log(type, data);
   switch (type) {
     case "SUCCESS":
       return data;

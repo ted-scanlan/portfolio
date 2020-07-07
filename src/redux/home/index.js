@@ -1,10 +1,10 @@
 // this is going to make a call to a createrequest helper (which will be used in all verticals)
 // ill need the name (home), params and endpoint (of api which will be a static json file (look at the example i made))
 
-import createRequest from "../helpers/create-request/index.js";
-// import selectors from "./selectors.js";
+import api from "../../constants/index.js";
 
-const api = "http://localhost:3000";
+import createRequest from "../helpers/create-request/index.js";
+import { selectors as customeSelectors } from "./selectors.js";
 
 export const name = "home";
 
@@ -15,18 +15,17 @@ export const params = {
   //   _fields: "acf",
 };
 
-// calls create request
-
 const redux = createRequest({
   name,
   endpoint,
   params,
 });
 
-// in need to make createRequest in the helper, that will make the api request and send the action to update the state with the api data.
 export const { reducers } = redux;
 
-// export const selectors = selectors;
+export const selectors = customeSelectors;
+
+// will also need selectors from the createRequest which will enable us to ge the status of the page in order to know whether to display error etc.
 
 export const actions = {
   requestHome: redux.actions.requestData,
