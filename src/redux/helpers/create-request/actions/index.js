@@ -9,13 +9,23 @@ const createActions = () => ({
     type: "SUCCESS",
     data,
   }),
+  fetchDataError: () => ({
+    type: "ERROR",
+  }),
+  fetchDataPending: () => ({
+    type: "PENDING",
+  }),
 });
 
 export default ({ endpoint, params = {} } = {}) => {
-  const { fetchDataSuccess } = createActions();
+  const {
+    fetchDataSuccess,
+    fetchDataError,
+    fetchDataPending,
+  } = createActions();
   return {
     requestData: ({ params: dynamicParams = {} } = {}) => async (dispatch) => {
-      console.log(params);
+      dispatch(fetchDataPending());
       try {
         const response = await axios.get(endpoint, {
           params: {
@@ -27,6 +37,7 @@ export default ({ endpoint, params = {} } = {}) => {
         dispatch(fetchDataSuccess(response?.data));
       } catch (error) {
         console.log(error);
+        dispatch(fetchDataError());
       }
     },
   };

@@ -4,8 +4,9 @@ import { createSelector } from "reselect";
 // const getHeading = (state)
 
 const getDescription = (state) => {
-  if (state.home[0]) {
-    return state.home[0].description;
+  console.log(state);
+  if (state.home) {
+    return state.home;
   }
 };
 

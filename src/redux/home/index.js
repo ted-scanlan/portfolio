@@ -4,7 +4,7 @@
 import api from "../../constants/index.js";
 
 import createRequest from "../helpers/create-request/index.js";
-import { selectors as customeSelectors } from "./selectors.js";
+import { selectors as customSelectors } from "./selectors.js";
 
 export const name = "home";
 
@@ -23,7 +23,10 @@ const redux = createRequest({
 
 export const { reducers } = redux;
 
-export const selectors = customeSelectors;
+export const selectors = {
+  custom: customSelectors,
+  other: redux.selectors,
+};
 
 // will also need selectors from the createRequest which will enable us to ge the status of the page in order to know whether to display error etc.
 

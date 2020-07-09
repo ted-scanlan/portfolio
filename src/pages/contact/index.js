@@ -19,16 +19,20 @@ const Contact = () => {
 
   return (
     <div className={styles.contact}>
-      <div className={styles.email}>
-        <Text dataId="email" style={Text.styles.large}>
-          {info.email}
-        </Text>
-      </div>
-      <div className={styles.number}>
-        <Text dataId="number" style={Text.styles.large}>
-          {info.number}
-        </Text>
-      </div>
+      {info.data && (
+        <div className={styles.email}>
+          <Text dataId="email" style={Text.styles.large}>
+            {info.data.email}
+          </Text>
+        </div>
+      )}
+      {info.data && (
+        <div className={styles.number}>
+          <Text dataId="number" style={Text.styles.large}>
+            {info.data.number}
+          </Text>
+        </div>
+      )}
     </div>
   );
 };
