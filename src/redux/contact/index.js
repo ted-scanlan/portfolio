@@ -24,4 +24,7 @@ export const actions = {
   requestContact: redux.actions.requestData,
 };
 
-export const selectors = customSelectors;
+export const selectors = {
+  custom: customSelectors,
+  status: redux.selectors,
+};

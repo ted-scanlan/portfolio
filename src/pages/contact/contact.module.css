@@ -7,3 +7,17 @@
     text-align: center;
     margin: 30px auto;
 }
+
+.error {
+    max-width: 300px;;
+    margin: 200px auto;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 30% auto;
+ 
+}

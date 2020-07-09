@@ -8,6 +8,7 @@ import {
 import styles from "./home.module.css";
 import Text from "../../components/Text/index.js";
 import Error from "../../components/Error/index.js";
+import Loader from "../../components/Loader/index.js";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const Home = () => {
   if (isPending) {
     return (
       <div className={styles.loader}>
-        <Text dataId="errorr">loader should go here</Text>
+        <Loader />
       </div>
     );
   }

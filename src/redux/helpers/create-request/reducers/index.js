@@ -18,7 +18,7 @@ export default (types) => (state = initialState, { type, data }) => {
       return {
         ...state,
         hasError: true,
-        // isPending: false,
+        isPending: false,
       };
     case "PENDING":
       return {
