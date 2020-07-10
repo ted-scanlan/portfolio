@@ -1,28 +1,30 @@
 import { createSelector } from "reselect";
 
-const getContactInfo = (state) => {
-  if (state.contact) {
-    return state.contact;
+const getDescription = (state) => {
+  if (state.contact.data) {
+    return state.contact.data.description;
   }
-}; // remember i have to add the root reducer so the state for contact page can appear in the root reducer
+};
 
-export const selectors = createSelector(getContactInfo, (info) => info);
+const getEmail = (state) => {
+  if (state.contact.data) {
+    return state.contact.data.email;
+  }
+};
 
-// import { createSelector } from "reselect";
+const getNumber = (state) => {
+  if (state.contact.data) {
+    return state.contact.data.number;
+  }
+};
 
-// function isEmpty(obj) {
-//   for (var key in obj) {
-//     if (obj.hasOwnProperty(key)) return false;
-//   }
-//   return true;
-// }
+// remember i have to add the root reducer so the state for contact page can appear in the root reducer
 
-// const getContactInfo = (state) => {
-//   console.log("state", state);
-//   if (!isEmpty(state.contact.data)) {
-//     console.log(state.contact.data.email);
-//     return state.contact;
-//   }
-// }; // remember i have to add the root reducer so the state for contact page can appear in the root reducer
-
-// export const selectors = createSelector(getContactInfo, (info) => info);
+export const getInfo = createSelector(
+  [getDescription, getEmail, getNumber],
+  (description, email, number) => ({
+    description,
+    email,
+    number,
+  })
+);

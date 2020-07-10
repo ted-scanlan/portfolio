@@ -21,8 +21,11 @@ const Home = () => {
   const isPending = getStatuses.status.home.isPending;
 
   const { description } = useSelector(homeSelectors.custom);
+
   function getInfo(des) {
-    return des.data[0].description;
+    if (des.data[0]) {
+      return des.data[0].description;
+    }
   }
 
   // now the action has been sent to update the state, we need to use a selector to grab the bits of state we need for the page, in this case the description info.

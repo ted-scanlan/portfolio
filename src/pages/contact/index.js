@@ -9,6 +9,7 @@ import styles from "./contact.module.css";
 import Text from "../../components/Text/index.js";
 import Loader from "../../components/Loader/index.js";
 import Error from "../../components/Error/index.js";
+import linkedinLogo from "../../assets/linkedin.png";
 
 const Contact = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,8 @@ const Contact = () => {
     dispatch(contactActions.requestContact());
   }, [dispatch]);
 
-  const info = useSelector(contactSelectors.custom);
+  const pageContent = useSelector(contactSelectors.custom);
+  const { description, email, number } = pageContent;
 
   const getStatus = useSelector(contactSelectors.status);
   const hasError = getStatus.status.contact.hasError; // should i be doing this extracting here on in the selector ?
@@ -42,21 +44,32 @@ const Contact = () => {
 
   return (
     <div className={styles.contact}>
-      {console.log(getStatus)}
-      {info.data && (
-        <div className={styles.email}>
-          <Text dataId="email" style={Text.styles.large}>
-            {info.data.email}
-          </Text>
+      <div className={styles.description}>
+        <Text style={Text.styles.large} element={Text.elements.h1}>
+          {description}
+        </Text>
+      </div>
+
+      <div className={styles.email}>
+        <Text dataId="email" style={Text.styles.large}>
+          {email}
+        </Text>
+      </div>
+
+      <div className={styles.number}>
+        <Text dataId="number" style={Text.styles.large}>
+          {number}
+        </Text>
+      </div>
+
+      <div className={styles.contactLinks}>
+        <div className={styles.linkedin}>
+          <img src={linkedinLogo} alt="linkedin"></img>
         </div>
-      )}
-      {info.data && (
-        <div className={styles.number}>
-          <Text dataId="number" style={Text.styles.large}>
-            {info.data.number}
-          </Text>
+        <div className={styles.github}>
+          <img src={linkedinLogo} alt="github"></img>
         </div>
-      )}
+      </div>
     </div>
   );
 };

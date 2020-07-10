@@ -1,9 +1,5 @@
 import axios from "axios";
 
-// this will have the middleware in that calls the api
-
-// this is imported as createAction
-
 const createActions = () => ({
   fetchDataSuccess: (data) => ({
     type: "SUCCESS",
@@ -18,6 +14,7 @@ const createActions = () => ({
 });
 
 export default ({ endpoint, params = {} } = {}) => {
+  // this is imported as createAction
   const {
     fetchDataSuccess,
     fetchDataError,
@@ -34,7 +31,12 @@ export default ({ endpoint, params = {} } = {}) => {
           },
         });
         // we need to send an action with the data;
-        dispatch(fetchDataSuccess(response?.data));
+        return new Promise((resolve) => {
+          setTimeout(
+            () => resolve(dispatch(fetchDataSuccess(response?.data))),
+            1500
+          );
+        });
       } catch (error) {
         console.log(error);
         dispatch(fetchDataError());

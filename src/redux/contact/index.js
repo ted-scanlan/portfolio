@@ -2,7 +2,7 @@
 
 import api from "../../constants/index.js";
 import createRequest from "../helpers/create-request/index.js";
-import { selectors as customSelectors } from "./selectors.js";
+import { getInfo as customSelectors } from "./selectors.js";
 
 const name = "contact";
 
