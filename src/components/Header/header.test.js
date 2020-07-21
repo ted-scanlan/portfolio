@@ -1,6 +1,8 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
 import Adapter from "enzyme-adapter-react-16";
+
 import { configure, mount } from "enzyme";
 
 import Header from "./index.js";
@@ -9,7 +11,11 @@ configure({ adapter: new Adapter() });
 describe("Header component", () => {
   let wrapper;
   beforeEach(() => {
-    wrapper = mount(<Header />);
+    wrapper = mount(
+      <BrowserRouter>
+        <Header />
+      </BrowserRouter>
+    );
   });
   it("should render header with correct className", () => {
     expect(wrapper.find('[data-qa="header"]').hasClass("header")).toEqual(true);
@@ -28,6 +34,12 @@ describe("Header component", () => {
     expect(wrapper.find('[data-id="nav"] h1[data-qa="text"]').text()).toEqual(
       "Contact"
     );
+  });
+  it("should have a link to contact", () => {
+    console.log(wrapper.debug());
+    // expect(wrapper.find('[data-id="nav"] h1[data-qa="text"]').text()).toEqual(
+    //   "Contact"
+    // );
   });
 
   // also need to test links when i put them in

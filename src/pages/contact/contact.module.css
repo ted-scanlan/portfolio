@@ -31,3 +31,20 @@
     margin: 30% auto;
  
 }
+
+.contactLinks {
+    display: flex;
+    padding-top: 30px;
+    justify-content: space-around;
+
+}
+
+.linkedin {
+    max-width: 80px;
+    max-height: 80px;
+}
+.github {
+    max-width: 80px;
+    max-height: 80px;
+}
+

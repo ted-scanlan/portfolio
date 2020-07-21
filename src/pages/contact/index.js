@@ -7,9 +7,11 @@ import {
 } from "../../redux/contact/index.js";
 import styles from "./contact.module.css";
 import Text from "../../components/Text/index.js";
+import Link from "../../components/Link/index.js";
 import Loader from "../../components/Loader/index.js";
 import Error from "../../components/Error/index.js";
-import linkedinLogo from "../../assets/linkedin.png";
+import linkedinLogo from "../../assets/logos/linkedin.png";
+import githubLogo from "../../assets/logos/github.png";
 
 const Contact = () => {
   const dispatch = useDispatch();
@@ -18,13 +20,11 @@ const Contact = () => {
     dispatch(contactActions.requestContact());
   }, [dispatch]);
 
-  const pageContent = useSelector(contactSelectors.custom);
-  const { description, email, number } = pageContent;
+  const pageContent = useSelector(contactSelectors.getInfo);
+  const { description, email, number, links } = pageContent;
 
-  const getStatus = useSelector(contactSelectors.status);
-  const hasError = getStatus.status.contact.hasError; // should i be doing this extracting here on in the selector ?
-  const isPending = getStatus.status.contact.isPending;
-  // need to tidy this up
+  const getStatuses = useSelector(contactSelectors.status);
+  const { hasError, isPending } = getStatuses.status;
 
   if (isPending) {
     return (
@@ -62,14 +62,20 @@ const Contact = () => {
         </Text>
       </div>
 
-      <div className={styles.contactLinks}>
-        <div className={styles.linkedin}>
-          <img src={linkedinLogo} alt="linkedin"></img>
+      {links && (
+        <div className={styles.contactLinks}>
+          <Link href={links.linkedin} isAnchor={true} dataId={"linkedin"}>
+            <img
+              src={linkedinLogo}
+              alt="linkedin"
+              className={styles.linkedin}
+            ></img>
+          </Link>
+          <Link href={links.github} isAnchor={true} dataId="github">
+            <img src={githubLogo} alt="github" className={styles.github}></img>
+          </Link>
         </div>
-        <div className={styles.github}>
-          <img src={linkedinLogo} alt="github"></img>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
