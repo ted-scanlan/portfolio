@@ -1,7 +1,7 @@
 import api from "../../constants/index.js";
 
 import createRequest from "../helpers/create-request/index.js";
-import { getInfo } from "./selectors.js";
+import { getInfo, getSingleProject } from "./selectors.js";
 
 export const name = "projects";
 
@@ -19,6 +19,7 @@ export const { reducers } = redux;
 export const selectors = {
   status: redux.selectors,
   getInfo: getInfo,
+  getProject: getSingleProject,
 };
 
 export const actions = {
