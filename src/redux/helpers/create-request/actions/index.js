@@ -1,25 +1,31 @@
 import axios from "axios";
 
-const createActions = () => ({
+const createActions = (types) => ({
   fetchDataSuccess: (data) => ({
-    type: "SUCCESS",
+    type: types.success,
     data,
   }),
   fetchDataError: () => ({
-    type: "ERROR",
+    type: types.error,
   }),
   fetchDataPending: () => ({
-    type: "PENDING",
+    type: types.pending,
+  }),
+  fetchDataReset: () => ({
+    type: types.reset,
   }),
 });
 
-export default ({ endpoint, params = {} } = {}) => {
+export default ({ types, endpoint, params = {} } = {}) => {
   // this is imported as createAction
   const {
     fetchDataSuccess,
     fetchDataError,
     fetchDataPending,
-  } = createActions();
+    fetchDataReset: requestReset,
+  } = createActions(types);
+
+  console.log({ endpoint }, { params });
   return {
     requestData: ({ params: dynamicParams = {} } = {}) => async (dispatch) => {
       dispatch(fetchDataPending());
@@ -30,7 +36,7 @@ export default ({ endpoint, params = {} } = {}) => {
             ...dynamicParams,
           },
         });
-        // we need to send an action with the data;
+        console.log(response);
         return new Promise((resolve) => {
           setTimeout(
             () => resolve(dispatch(fetchDataSuccess(response?.data))),
@@ -38,9 +44,9 @@ export default ({ endpoint, params = {} } = {}) => {
           );
         });
       } catch (error) {
-        console.log(error);
         dispatch(fetchDataError());
       }
     },
+    requestReset,
   };
 };

@@ -13,9 +13,13 @@ const createRequest = ({ name, endpoint, params } = {}) => {
   // need to create types, so i will have a success/pending/error whihci can send to reducer, then if its SUCCESS, it changes the state of the app to have the data (i.e. home description) in it.
 
   const types = createTypes(name);
-  const actions = createAction({ name, endpoint, params });
+  const actions = createAction({ types, endpoint, params });
+
+  console.log({ types });
   const reducers = createReducer(types);
   const selectors = createSelector(name);
+
+  // types need to be passed to actions and reducers, so that they know which page content is being added to. all reducers are called when an action is fired and if you dont specificy which one then the data will be added to all reducers in root reducer. you can thin of the reducer as a re-useable component that is used in all pages.
 
   return {
     actions,

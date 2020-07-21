@@ -2,9 +2,9 @@
 
 import api from "../../constants/index.js";
 import createRequest from "../helpers/create-request/index.js";
-import { getInfo as customSelectors } from "./selectors.js";
+import { getInfo } from "./selectors.js";
 
-const name = "contact";
+export const name = "contact";
 
 const endpoint = `${api}/${name}`;
 
@@ -25,6 +25,6 @@ export const actions = {
 };
 
 export const selectors = {
-  custom: customSelectors,
   status: redux.selectors,
+  getInfo: getInfo,
 };

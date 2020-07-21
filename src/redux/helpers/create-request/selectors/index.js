@@ -1,8 +1,7 @@
 import { createSelector } from "reselect";
 
 const getStatus = (state, name) => {
-  console.log("create request statuses", state);
-  return state;
+  return state[name];
 };
 
 export const statusSelectors = (name) =>
