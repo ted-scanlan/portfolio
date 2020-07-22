@@ -12,6 +12,7 @@ body {
     height: 60px;
     text-align: center;
     padding: 10px;
+    padding-top: 50vh;
     margin-right: 10px;
     width: 100%;
     display: flex;

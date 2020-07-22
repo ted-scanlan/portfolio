@@ -11,7 +11,6 @@ export const name = "home";
 export const endpoint = `${api}/${name}`;
 
 export const params = {
-  slug: "ted-home",
   _fields: "acf",
 };
 

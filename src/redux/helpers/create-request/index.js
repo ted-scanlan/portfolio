@@ -15,7 +15,6 @@ const createRequest = ({ name, endpoint, params } = {}) => {
   const types = createTypes(name);
   const actions = createAction({ types, endpoint, params });
 
-  console.log({ types });
   const reducers = createReducer(types);
   const selectors = createSelector(name);
 

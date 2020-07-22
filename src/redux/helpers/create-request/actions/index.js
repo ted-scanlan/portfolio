@@ -25,7 +25,6 @@ export default ({ types, endpoint, params = {} } = {}) => {
     fetchDataReset: requestReset,
   } = createActions(types);
 
-  console.log({ endpoint }, { params });
   return {
     requestData: ({ params: dynamicParams = {} } = {}) => async (dispatch) => {
       dispatch(fetchDataPending());
@@ -33,7 +32,7 @@ export default ({ types, endpoint, params = {} } = {}) => {
         const response = await axios.get(endpoint, {
           params: {
             ...params,
-            ...dynamicParams,
+            name: dynamicParams.slug,
           },
         });
         console.log(response);
