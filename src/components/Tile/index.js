@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import styles from "./tile.module.css";
 
 const Tile = ({ children, dataId }) => {
@@ -7,6 +9,11 @@ const Tile = ({ children, dataId }) => {
       {children}
     </div>
   );
+};
+
+Tile.propTypes = {
+  children: PropTypes.node.isRequired,
+  dataId: PropTypes.string,
 };
 
 export default Tile;

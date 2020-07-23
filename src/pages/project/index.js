@@ -9,8 +9,10 @@ import styles from "./project.module.css";
 
 import Text from "../../components/Text/index.js";
 import Image from "../../components/Image/index.js";
+import Link from "../../components/Link/index.js";
 import Loader from "../../components/Loader/index.js";
 import Error from "../../components/Loader/index.js";
+import Tile from "../../components/Tile/index.js";
 
 const Project = () => {
   const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const Project = () => {
 
   const { projects } = useSelector(projectSelectors.getInfo);
   const project = projects[0];
-  const imageSrc = imagesConfig["large"][slug].src;
+  const imageSrc = imagesConfig["medium"][slug].src;
 
   if (isPending) {
     return (
@@ -45,7 +47,7 @@ const Project = () => {
   return (
     <div className={styles.project}>
       {project && (
-        <div>
+        <Tile>
           <div className={styles.title}>
             <Text
               style={Text.styles.medium}
@@ -70,7 +72,12 @@ const Project = () => {
             </Text>
             <Text>{project.techUsed.description}</Text>
           </div>
-        </div>
+          <div className={styles.link}>
+            <Link href={project.link.url}>
+              <Text>{project.link.title}</Text>
+            </Link>
+          </div>
+        </Tile>
       )}
     </div>
   );

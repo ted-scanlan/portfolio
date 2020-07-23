@@ -1,6 +1,9 @@
 .tile {
-    /* padding: 20px;
-    text-align: center; */
-    margin: 15px;
-
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(247, 245, 240);
+    max-width: 1000px;
+    border-radius: 5px;
+  
 } 
+
