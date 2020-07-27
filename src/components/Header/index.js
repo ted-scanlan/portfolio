@@ -25,7 +25,7 @@ const Header = () => (
         </Text>
       </Link>
     </div>
-    <div className={styles.nav}>
+    <div className={styles.nav} data-id="nav">
       <Link href="/contact" dataId="contact-link">
         <Text
           style={Text.styles.small}

@@ -20,9 +20,10 @@ Source.propTypes = {
 
 const Image = ({ src, alt, sources, dataId }) => (
   <picture data-qa="image" data-id={dataId}>
-    {sources.map(({ srcSet, width }) => (
-      <Source srcSet={srcSet} width={width} key={srcSet} />
-    ))}
+    {sources &&
+      sources.map(({ srcSet, width }) => (
+        <Source srcSet={srcSet} width={width} key={srcSet} />
+      ))}
 
     <img src={src} alt={alt} data-src={src} className={styles.img}></img>
   </picture>

@@ -28,6 +28,8 @@ const Project = () => {
   const { projects } = useSelector(projectSelectors.getInfo);
   const project = projects[0];
   const imageSrc = imagesConfig["medium"][slug].src;
+  const mediumLarge = imagesConfig["medium_Large"][slug].src;
+  const fullScreen = imagesConfig["twenty"][slug].src;
 
   if (isPending) {
     return (
@@ -58,22 +60,42 @@ const Project = () => {
             </Text>
           </div>
           <div className={styles.projectImage}>
-            <Image src={imageSrc} />
+            <Image
+              src={imageSrc}
+              sources={[
+                {
+                  srcSet: mediumLarge,
+                  width: 580,
+                },
+                {
+                  srcSet: fullScreen,
+                  width: 1536,
+                },
+              ]}
+            />
           </div>
           <div className={styles.description}>
-            <Text style={Text.styles.small} element={Text.elements.h1}>
+            <Text
+              style={Text.styles.small}
+              element={Text.elements.h1}
+              className={styles.descriptionTitle}
+            >
               {project.company.title}
             </Text>
-            <Text>{project.company.description}</Text>
+            <div className={styles.descriptionText}>
+              <Text>{project.company.description}</Text>
+            </div>
           </div>
           <div className={styles.techUsed}>
             <Text style={Text.styles.small} element={Text.elements.h1}>
               {project.techUsed.title}
             </Text>
-            <Text>{project.techUsed.description}</Text>
+            <div className={styles.descriptionText}>
+              <Text>{project.techUsed.description}</Text>
+            </div>
           </div>
           <div className={styles.link}>
-            <Link href={project.link.url}>
+            <Link href={project.link.url} isAnchor={true} dataId="projectLink">
               <Text>{project.link.title}</Text>
             </Link>
           </div>
