@@ -74,7 +74,7 @@ const Home = () => {
                 <Link href={`projects/${url}`}>
                   <Tile>
                     <div className={styles.projectImage}>
-                      <Image src={imagesConfig["medium"][name].src} />
+                      <Image src={imagesConfig["medium_Large"][name].src} />
                     </div>
                     <div className={styles.projectTitle}>
                       <Text>{title}</Text>

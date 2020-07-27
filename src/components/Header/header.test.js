@@ -1,46 +1,42 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { act } from "react-dom/test-utils";
 
-import Adapter from "enzyme-adapter-react-16";
+// import { routes } from "../../lib/constants";
 
-import { configure, mount } from "enzyme";
+import { setupTestProvider, setupTestComponent } from "../../setupTests";
+import Header from ".";
 
-import Header from "./index.js";
+const setupTest = setupTestProvider({
+  render: () => <Header />,
+});
 
-configure({ adapter: new Adapter() });
-describe("Header component", () => {
-  let wrapper;
-  beforeEach(() => {
-    wrapper = mount(
-      <BrowserRouter>
-        <Header />
-      </BrowserRouter>
-    );
-  });
-  it("should render header with correct className", () => {
-    expect(wrapper.find('[data-qa="header"]').hasClass("header")).toEqual(true);
+describe("Components: Header", () => {
+  it("should render Header with correct className", () => {
+    const { wrapper } = setupTest();
+    console.log(wrapper.debug());
+    expect(wrapper.find('[data-qa="header"]')).toHaveClassName("header");
   });
   it("should render correct name as a h1 tag", () => {
+    const { wrapper } = setupTest();
     expect(
-      wrapper.find('[data-id="nameContainer"] h1[data-qa="text"]').text()
+      wrapper.find('[data-qa="header"] div[data-id="nameContainer"]').text()
     ).toEqual("Ted Scanlan");
   });
   it("should render correct job title as a h1 tag", () => {
-    expect(wrapper.find('[data-id="job"] h1[data-qa="text"]').text()).toEqual(
-      "Software Developer"
-    );
+    const { wrapper } = setupTest();
+
+    expect(
+      wrapper.find('[data-qa="header"] Text[data-id="job"]').text()
+    ).toEqual("Software Developer");
   });
   it("should render nav text as a h1 tag", () => {
+    const { wrapper } = setupTest();
     expect(wrapper.find('[data-id="nav"] h1[data-qa="text"]').text()).toEqual(
       "Contact"
     );
   });
-  it("should have a link to contact", () => {
-    console.log(wrapper.debug());
-    // expect(wrapper.find('[data-id="nav"] h1[data-qa="text"]').text()).toEqual(
-    //   "Contact"
-    // );
-  });
+  // it('should link to home when name is clicked', () => {
+  //   const { wrapper } = setupTest();
 
-  // also need to test links when i put them in
+  // })
 });
