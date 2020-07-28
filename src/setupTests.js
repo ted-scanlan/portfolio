@@ -45,10 +45,12 @@ export const setupTestProvider = ({
   render: testRender,
   props: testProps,
   prerender: testPrerender = () => {},
+  path: testPath,
 } = {}) => {
   const render = testRender || baseRender;
   const props = testProps || baseProps;
   const store = createStore(rootReducer, {}, compose(applyMiddleware(thunk)));
+  let history;
   basePrerender(store);
   testPrerender(store);
 
@@ -56,7 +58,8 @@ export const setupTestProvider = ({
     <MemoryRouter>
       <Provider store={store}>
         <Route
-          render={() => {
+          render={({ history: _history }) => {
+            history = _history;
             return React.cloneElement(render(), props);
           }}
         />

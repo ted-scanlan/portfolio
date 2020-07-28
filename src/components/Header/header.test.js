@@ -1,9 +1,8 @@
 import React from "react";
-import { act } from "react-dom/test-utils";
 
 // import { routes } from "../../lib/constants";
 
-import { setupTestProvider, setupTestComponent } from "../../setupTests";
+import { setupTestProvider } from "../../setupTests";
 import Header from ".";
 
 const setupTest = setupTestProvider({
@@ -35,8 +34,18 @@ describe("Components: Header", () => {
       "Contact"
     );
   });
-  // it('should link to home when name is clicked', () => {
-  //   const { wrapper } = setupTest();
-
-  // })
+  it("should link to home when name is clicked", () => {
+    const { wrapper, history } = setupTest();
+    wrapper
+      .find('span[data-id="home-link"] a')
+      .simulate("click", { button: 0 });
+    expect(history.location.pathname).toEqual("/");
+  });
+  it("should link to contact when contact is clicked", () => {
+    const { wrapper, history } = setupTest();
+    wrapper
+      .find('span[data-id="contact-link"] a')
+      .simulate("click", { button: 0 });
+    expect(history.location.pathname).toEqual("/contact");
+  });
 });
