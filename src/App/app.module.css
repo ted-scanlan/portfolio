@@ -8,14 +8,15 @@ body {
 }
 
 .footer {
-    height: 60px;
+    height: 30px;
     text-align: center;
     padding: 10px;
-    padding-top: 50vh;
     margin-right: 10px;
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    /* position: absolute;
+    float: left; */
 
 }
 

@@ -39,7 +39,7 @@ export default ({ types, endpoint, params = {} } = {}) => {
         return new Promise((resolve) => {
           setTimeout(
             () => resolve(dispatch(fetchDataSuccess(response?.data))),
-            1500
+            1000
           );
         });
       } catch (error) {

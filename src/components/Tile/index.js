@@ -5,7 +5,7 @@ import styles from "./tile.module.css";
 
 const Tile = ({ children, dataId }) => {
   return (
-    <div className={styles.tile} data-id={dataId}>
+    <div className={styles.tile} data-id={dataId} data-qa="tile">
       {children}
     </div>
   );
